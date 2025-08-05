@@ -118,6 +118,60 @@
       top: 0;
       right: 0;
       width: 150px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.05); }
+      50%  { transform: scale(1.1); }
+      75%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Animations */
+    .slide-in-left.animate { animation: slideInLeft 1s ease-out; }
+    .slide-in-right.animate { animation: slideInRight 1s ease-out; }
+    .fade-in.animate { animation: fadeIn 2s ease-in; }
+    .zoom-in.animate { animation: zoomIn 1s ease-in; }
+    .bounce-in.animate { animation: bounceIn 1.5s ease; }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    /* Initial hidden state before animation */
+    .pre-animate {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .pre-animate.animate {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 1s ease-out;
     }
   </style>
 </head>
@@ -134,7 +188,7 @@
   </div>
 
   <div class="profiles">
-    <div class="profile-box">
+    <div class="profile-box slide-in-left pre-animate">
       <img src="M1.jpg" alt="Male Match">
       <div class="match-message">
         <strong>Mi Amor!</strong><br>
@@ -143,7 +197,7 @@
       </div>
     </div>
     <div class="heart">💞</div>
-    <div class="profile-box">
+    <div class="profile-box fade-in pre-animate">
       <img src="M1.jpg" alt="Female Match">
       <div class="match-message">
         <strong>Mi Amor!</strong><br>
@@ -151,7 +205,7 @@
         Start a Chat with them
       </div>
     </div>
-    <div class="profile-box">
+    <div class="profile-box zoom-in pre-animate">
       <img src="M1.jpg" alt="Male Match">
       <div class="match-message">
         <strong>Mi Amor!</strong><br>
@@ -160,7 +214,7 @@
       </div>
     </div>
     <div class="heart">💞</div>
-    <div class="profile-box">
+    <div class="profile-box slide-in-right pre-animate">
       <img src="M1.jpg" alt="Female Match">
       <div class="match-message">
         <strong>Mi Amor!</strong><br>
@@ -168,7 +222,7 @@
         Start a Chat with them
       </div>
     </div>
-    <div class="profile-box">
+    <div class="profile-box bounce-in pre-animate">
       <img src="M1.jpg" alt="Male Match">
       <div class="match-message">
         <strong>Mi Amor!</strong><br>
@@ -177,7 +231,7 @@
       </div>
     </div>
     <div class="heart">💞</div>
-    <div class="profile-box">
+    <div class="profile-box fade-in pre-animate">
       <img src="M1.jpg" alt="Female Match">
       <div class="match-message">
         <strong>Mi Amor!</strong><br>
@@ -188,6 +242,20 @@
   </div>
 
   <button class="join-btn">Join us today</button>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pre-animate').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
