@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiAmor GME Match</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #001f4d, #003399);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .header {
+      padding-top: 40px;
+    }
+
+    .logo {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: white;
+    }
+
+    .logo span {
+      color: #FFD700;
+    }
+
+    .gme {
+      font-size: 4em;
+      font-weight: 900;
+      color: #d0f2ff;
+      text-shadow: 0 0 20px #00e0ff;
+      margin: 20px 0;
+    }
+
+    .sub-text {
+      font-size: 1.2em;
+      color: #e0e0e0;
+    }
+
+    .sub-text span {
+      color: #00e0ff;
+      font-weight: bold;
+    }
+
+    .profiles {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin: 40px auto;
+      flex-wrap: wrap;
+    }
+
+    .profile-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,224,255,0.3);
+    }
+
+    .profile-box img {
+      width: 200px;
+      height: 250px;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+
+    .match-message {
+      margin-top: 10px;
+      background-color: #f2f2f2;
+      color: #000;
+      font-size: 0.9em;
+      padding: 8px;
+      border-radius: 10px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .heart {
+      font-size: 4em;
+      color: red;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    .join-btn {
+      background: linear-gradient(to right, #0033FF, #3399FF);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00e0ff;
+      transition: 0.3s ease;
+      margin-bottom: 50px;
+    }
+
+    .join-btn:hover {
+      box-shadow: 0 0 25px #00e0ff;
+      background: linear-gradient(to right, #0022cc, #2b6fff);
+    }
+
+    .roses {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 150px;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.05); }
+      50%  { transform: scale(1.1); }
+      75%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Animations */
+    .slide-in-left.animate { animation: slideInLeft 1s ease-out; }
+    .slide-in-right.animate { animation: slideInRight 1s ease-out; }
+    .fade-in.animate { animation: fadeIn 2s ease-in; }
+    .zoom-in.animate { animation: zoomIn 1s ease-in; }
+    .bounce-in.animate { animation: bounceIn 1.5s ease; }
+
+    @keyframes slideInLeft {
+      0% { opacity: 0; transform: translateX(-100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      0% { opacity: 0; transform: translateX(100px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.3); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    /* Initial hidden state before animation */
+    .pre-animate {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .pre-animate.animate {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 1s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="M3.png" alt="roses" class="roses">
+
+  <div class="header">
+    <div class="logo"><span>mi</span>Amor</div>
+    <div class="gme">Platform</div>
+    <div class="sub-text">
+      Earn up to <span>$2.5</span> from Matching and Getting matched with the love of your life on <span>MiAmor</span>
+    </div>
+  </div>
+
+  <div class="profiles">
+    <div class="profile-box slide-in-left pre-animate">
+      <img src="M1.jpg" alt="Male Match">
+      <div class="match-message">
+        <strong>Mi Amor!</strong><br>
+        You’ve been paired with Amaka Bisola Aisha<br>
+        Start a Chat with them
+      </div>
+    </div>
+    <div class="heart">💞</div>
+    <div class="profile-box fade-in pre-animate">
+      <img src="M1.jpg" alt="Female Match">
+      <div class="match-message">
+        <strong>Mi Amor!</strong><br>
+        You’ve been paired with Chinedu Tunde Musa<br>
+        Start a Chat with them
+      </div>
+    </div>
+    <div class="profile-box zoom-in pre-animate">
+      <img src="M1.jpg" alt="Male Match">
+      <div class="match-message">
+        <strong>Mi Amor!</strong><br>
+        You’ve been paired with Amaka Bisola Aisha<br>
+        Start a Chat with them
+      </div>
+    </div>
+    <div class="heart">💞</div>
+    <div class="profile-box slide-in-right pre-animate">
+      <img src="M1.jpg" alt="Female Match">
+      <div class="match-message">
+        <strong>Mi Amor!</strong><br>
+        You’ve been paired with Chinedu Tunde Musa<br>
+        Start a Chat with them
+      </div>
+    </div>
+    <div class="profile-box bounce-in pre-animate">
+      <img src="M1.jpg" alt="Male Match">
+      <div class="match-message">
+        <strong>Mi Amor!</strong><br>
+        You’ve been paired with Amaka Bisola Aisha<br>
+        Start a Chat with them
+      </div>
+    </div>
+    <div class="heart">💞</div>
+    <div class="profile-box fade-in pre-animate">
+      <img src="M1.jpg" alt="Female Match">
+      <div class="match-message">
+        <strong>Mi Amor!</strong><br>
+        You’ve been paired with Chinedu Tunde Musa<br>
+        Start a Chat with them
+      </div>
+    </div>
+  </div>
+
+  <button class="join-btn">Join us today</button>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pre-animate').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
