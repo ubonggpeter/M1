@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>MiAmor GME Match</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #001f4d, #003399);
       color: white;
       text-align: center;
       position: relative;
-      overflow-x: hidden;
     }
 
     .header {
@@ -54,6 +63,7 @@
       gap: 40px;
       margin: 40px auto;
       flex-wrap: wrap;
+      padding: 0 15px;
     }
 
     .profile-box {
@@ -105,7 +115,8 @@
       cursor: pointer;
       box-shadow: 0 0 15px #00e0ff;
       transition: 0.3s ease;
-      margin-bottom: 50px;
+      margin: 30px auto 50px auto;
+      max-width: 160px;
     }
 
     .join-btn:hover {
@@ -129,7 +140,6 @@
       100% { transform: scale(1); }
     }
 
-    /* Animations */
     .slide-in-left.animate { animation: slideInLeft 1s ease-out; }
     .slide-in-right.animate { animation: slideInRight 1s ease-out; }
     .fade-in.animate { animation: fadeIn 2s ease-in; }
@@ -162,7 +172,6 @@
       100% { transform: scale(1); }
     }
 
-    /* Initial hidden state before animation */
     .pre-animate {
       opacity: 0;
       transform: translateY(50px);
@@ -172,6 +181,120 @@
       opacity: 1;
       transform: translateY(0);
       transition: all 1s ease-out;
+    }
+
+    /* Footer styles */
+    .miamor-footer {
+      position: relative;
+      width: 100%;
+      height: 88px;
+      background: linear-gradient(160deg, #002a80 0%, #3399ff 100%);
+      border-top-left-radius: 60% 30%;
+      border-top-right-radius: 60% 30%;
+      overflow: hidden;
+      z-index: 5;
+      box-shadow: 0 -10px 25px rgba(0, 255, 255, 0.4), inset 0 8px 14px rgba(255, 255, 255, 0.15);
+    }
+
+    .footer-hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(circle at 10% 30%, rgba(255, 255, 255, 0.25) 2%, transparent 4%),
+        radial-gradient(circle at 90% 40%, rgba(255, 255, 255, 0.25) 2%, transparent 4%),
+        radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.25) 2%, transparent 4%),
+        url('https://upload.wikimedia.org/wikipedia/commons/3/30/Heart_symbol_red.svg');
+      background-size: 16px 16px, 16px 16px, 16px 16px, 50px;
+      background-repeat: repeat;
+      opacity: 0.25;
+      z-index: 1;
+    }
+
+    .footer-zebra {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.25) 10px,
+        transparent 10px,
+        transparent 20px
+      );
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    .footer-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding-top: 10px;
+      font-size: 0.85rem;
+    }
+
+    .footer-logo {
+      height: 30px;
+      margin-bottom: 8px;
+    }
+
+    .social-icons {
+      margin: 5px 0;
+    }
+
+    .social-icons a {
+      color: #00eaff;
+      margin: 0 8px;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: white;
+    }
+
+    .copyright {
+      font-size: 0.75rem;
+      margin-top: 6px;
+      opacity: 0.8;
+    }
+
+    .footer-glow {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0,255,255,0.5) 0%, transparent 70%);
+      animation: pulse-glow 6s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        opacity: 0.4;
+        transform: translateX(-50%) scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-box img {
+        width: 100%;
+        height: auto;
+      }
+      .profiles {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .heart {
+        font-size: 2.5em;
+      }
     }
   </style>
 </head>
@@ -191,57 +314,35 @@
     <div class="profile-box slide-in-left pre-animate">
       <img src="M1.jpg" alt="Male Match">
       <div class="match-message">
-        <strong>Mi Amor!</strong><br>
-        You’ve been paired with Amaka Bisola Aisha<br>
-        Start a Chat with them
+        <strong>Mi Amor!</strong><br>You’ve been paired with Amaka Bisola Aisha<br>Start a Chat with them
       </div>
     </div>
     <div class="heart">💞</div>
     <div class="profile-box fade-in pre-animate">
       <img src="M1.jpg" alt="Female Match">
       <div class="match-message">
-        <strong>Mi Amor!</strong><br>
-        You’ve been paired with Chinedu Tunde Musa<br>
-        Start a Chat with them
-      </div>
-    </div>
-    <div class="profile-box zoom-in pre-animate">
-      <img src="M1.jpg" alt="Male Match">
-      <div class="match-message">
-        <strong>Mi Amor!</strong><br>
-        You’ve been paired with Amaka Bisola Aisha<br>
-        Start a Chat with them
-      </div>
-    </div>
-    <div class="heart">💞</div>
-    <div class="profile-box slide-in-right pre-animate">
-      <img src="M1.jpg" alt="Female Match">
-      <div class="match-message">
-        <strong>Mi Amor!</strong><br>
-        You’ve been paired with Chinedu Tunde Musa<br>
-        Start a Chat with them
-      </div>
-    </div>
-    <div class="profile-box bounce-in pre-animate">
-      <img src="M1.jpg" alt="Male Match">
-      <div class="match-message">
-        <strong>Mi Amor!</strong><br>
-        You’ve been paired with Amaka Bisola Aisha<br>
-        Start a Chat with them
-      </div>
-    </div>
-    <div class="heart">💞</div>
-    <div class="profile-box fade-in pre-animate">
-      <img src="M1.jpg" alt="Female Match">
-      <div class="match-message">
-        <strong>Mi Amor!</strong><br>
-        You’ve been paired with Chinedu Tunde Musa<br>
-        Start a Chat with them
+        <strong>Mi Amor!</strong><br>You’ve been paired with Chinedu Tunde Musa<br>Start a Chat with them
       </div>
     </div>
   </div>
 
   <button class="join-btn">Join us today</button>
+
+  <footer class="miamor-footer">
+    <div class="footer-hearts"></div>
+    <div class="footer-zebra"></div>
+    <div class="footer-content">
+      <img src="https://miamorweb.site/miamor-logo.png" alt="MiAmor Logo" class="footer-logo" />
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-telegram-plane"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <p class="copyright">© 2025 MiAmor Platform. All rights reserved.</p>
+    </div>
+    <div class="footer-glow"></div>
+  </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
