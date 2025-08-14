@@ -270,7 +270,7 @@
         <div class="field">
           <div class="meta">
             <div class="label">Amount to Pay</div>
-            <div id="amt" class="value">₦14,000 or 10,000</div>
+            <div id="chosen-package" style="margin:16px 0;font-weight:600;"></div>
           </div>
           <button class="copy-btn" data-copy="#amt" aria-label="Copy amount">Copy 📋</button>
         </div>
@@ -333,6 +333,20 @@
   <div class="glow" aria-hidden="true"></div>
 
   <script>
+  (function () {
+    const pkg = localStorage.getItem('etherealPackage');
+    const name = localStorage.getItem('etherealFullname');
+    const el = document.getElementById('chosen-package');
+    if (el) {
+      if (pkg) {
+        el.textContent = (name ? name + ', ' : '') + 'you selected: ' + pkg;
+      } else {
+        el.textContent = 'No package selected.';
+      }
+    }
+  })();
+
+    
     // Year
     document.getElementById('yr').textContent = new Date().getFullYear();
 
