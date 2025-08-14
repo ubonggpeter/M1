@@ -333,18 +333,17 @@
   <div class="glow" aria-hidden="true"></div>
 
   <script>
-  (function () {
-    const pkg = localStorage.getItem('etherealPackage');
-    const name = localStorage.getItem('etherealFullname');
-    const el = document.getElementById('chosen-package');
-    if (el) {
-      if (pkg) {
-        el.textContent = (name ? name + ', ' : '') + 'you selected: ' + pkg;
-      } else {
-        el.textContent = 'No package selected.';
-      }
-    }
-  })();
+(function () {
+  var pkg = localStorage.getItem('etherealPackage');
+  var name = localStorage.getItem('etherealFullname');
+  var el = document.getElementById('chosen-package');
+  if (!el) return;
+  el.textContent = pkg
+    ? (name ? name + ', ' : '') + 'you selected: ' + pkg
+    : 'No package selected.';
+})();
+
+
 
     
     // Year
