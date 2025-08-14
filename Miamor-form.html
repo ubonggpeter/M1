@@ -354,11 +354,44 @@
       const fullname = document.getElementById('fullname').value;
       if (fullname.trim() !== "") {
         localStorage.setItem('etherealFullname', fullname);
-        window.location.href = 'Ethereal-Packages.html';
+        window.location.href = 'miamor_payment_gateway.html';
       } else {
         alert("Please enter your full name.");
       }
     }
+
+    
+  //function storeFullname() {
+    //const fullname = document.getElementById('fullname').value;
+
+    // NEW: read selected package
+    const pkgEl = document.getElementById('package');
+    const selectedPackage = pkgEl ? pkgEl.value : "";
+
+    if (fullname.trim() !== "") {
+
+      // NEW: store both values for the next page
+      if (selectedPackage) {
+        localStorage.setItem('etherealPackage', selectedPackage);
+      }
+      localStorage.setItem('etherealFullname', fullname);
+
+      // (existing) your original redirect line remains here
+      // window.location.href = 'Ethereal-Packages.html';
+
+      // NEW: override target (no deletion of existing code)
+      setTimeout(function () {
+        window.location.href = 'miamor_payment_gateway.html';
+      }, 0);
+
+    } else {
+      alert("Please enter your full name.");
+    }
+  }
+
+  // ... keep the rest of your existing script exactly as-is ...
+
+
 
     let reviewScore = 2;
     let interval = setInterval(() => {
