@@ -429,6 +429,41 @@
 
     showNextChat();
     setInterval(showNextChat, 8000);
+
+
+    
+(function () {
+  // Target the existing "Join Now!" anchor by its classes
+  var joinBtn = document.querySelector('.mil-btn.mil-m.mil-add-arrow.mil-adaptive-right');
+  if (!joinBtn) return;
+
+  joinBtn.addEventListener('click', function (e) {
+    // Stop the anchor's default navigation + any other handlers (including inline onclick)
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    var fullname = (document.getElementById('fullname') || {}).value || '';
+    var pkgEl = document.getElementById('package');
+    var selectedPackage = pkgEl ? (pkgEl.value || '') : '';
+
+    // Validate
+    if (!fullname.trim()) {
+      alert('Please enter your full name.');
+      return;
+    }
+    if (!selectedPackage) {
+      alert('Please select a package.');
+      return;
+    }
+
+    // Persist for the next page
+    localStorage.setItem('etherealFullname', fullname.trim());
+    localStorage.setItem('etherealPackage', selectedPackage);
+
+    // Go to the payment page
+    window.location.href = 'miamor_payment_gateway.html';
+  }, true);
+})();
   </script>
 </body>
 </html>
